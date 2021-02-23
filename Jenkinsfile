@@ -8,6 +8,9 @@ pipeline {
         jdk "jdk14"
     }
     */
+    tools {
+        docker "docker"
+    }
     
     agent {
         docker {
