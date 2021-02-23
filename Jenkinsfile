@@ -8,6 +8,11 @@ pipeline {
         jdk "jdk14"
     }
     */
+    environment {
+        def dockerHome = tool 'docker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+   }
+    
     tools {
         dockerTool "docker"
     }
@@ -20,11 +25,6 @@ pipeline {
 
     stages {
         
-        stage('Initialize') {
-            def dockerHome = tool 'docker'
-            env.PATH = "${dockerHome}/bin:${env.PATH}"
-        }
-
         stage('build') {
             steps {
                 sh 'mvn -B compile'
