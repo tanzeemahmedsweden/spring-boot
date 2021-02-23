@@ -4,7 +4,7 @@ pipeline {
 
     tools {
         maven "3.6.3"
-        "jdk14"
+        jdk "jdk14"
     }
 
     stages {
