@@ -15,6 +15,9 @@ pipeline {
     }
     
     agent {
+        script {
+            echo "$PATH"
+        }
         docker {
             image "maven:3-openjdk-15-slim"
         }
