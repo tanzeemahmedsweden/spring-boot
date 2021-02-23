@@ -12,7 +12,6 @@ pipeline {
     agent {
         docker {
             image "maven:3-openjdk-15-slim"
-            label "docker"
         }
     }
 
