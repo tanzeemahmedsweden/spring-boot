@@ -8,10 +8,10 @@ pipeline {
         jdk "jdk14"
     }
     */
+    
     environment {
-        def dockerHome = tool 'docker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-   }
+        JAVA_TOOL_OPTIONS = "-Duser.home=/var/maven"
+    }
     
     tools {
         dockerTool "docker"
