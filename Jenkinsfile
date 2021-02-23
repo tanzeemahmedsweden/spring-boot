@@ -6,12 +6,9 @@ pipeline {
         // Below must be configured inside Manage Jenkins -> Global Tool Configuration -> key is predefined and value corresponds to name you have specified
         maven "3.6.3"
         jdk "jdk14"
+        dockerTool "docker"
     }
     */
-    
-    environment {
-        JAVA_TOOL_OPTIONS = "-Duser.home=/var/maven"
-    }
     
     tools {
         dockerTool "docker"
