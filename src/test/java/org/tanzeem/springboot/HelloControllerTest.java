@@ -13,7 +13,7 @@ public class HelloControllerTest {
     public static final String URI = "http://localhost:8081";
     private RestTemplate restTemplate = new RestTemplate();
 
-    @Test(expectedExceptions = ConnectException.class)
+    @Test(enabled = false, expectedExceptions = ConnectException.class)
     public void testHelloController() {
         final ResponseEntity<String> responseEntity = restTemplate.getForEntity(URI, String.class);
 
