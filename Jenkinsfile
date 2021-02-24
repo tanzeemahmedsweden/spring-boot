@@ -1,12 +1,30 @@
 pipeline {
+   
     agent {
-        docker { image 'node:14-alpine' }
+        docker {
+            image "maven:3-openjdk-15-slim"
+        }
     }
+
     stages {
-        stage('Test') {
+        
+        stage('build') {
             steps {
-                sh 'node --version'
+                sh 'mvn -B compile'
             }
+        }
+
+        stage('test') {
+            steps {
+                sh 'mvn -B test'
+            }
+
+        }
+    }
+    
+    post {
+        always {
+            cleanWs()
         }
     }
 }
