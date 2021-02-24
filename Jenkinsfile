@@ -1,39 +1,12 @@
 pipeline {
-    
-    // agent any
-
-    tools {
-        // Below must be configured inside Manage Jenkins -> Global Tool Configuration -> key is predefined and value corresponds to name you have specified
-        maven "3.6.3"
-        jdk "jdk14"
-        dockerTool "docker"
-     }
-   
     agent {
-        docker {
-            image "maven:3-openjdk-15-slim"
-        }
+        docker { image 'node:14-alpine' }
     }
-
     stages {
-        
-        stage('build') {
+        stage('Test') {
             steps {
-                sh 'mvn -B compile'
+                sh 'node --version'
             }
-        }
-
-        stage('test') {
-            steps {
-                sh 'mvn -B test'
-            }
-
-        }
-    }
-    
-    post {
-        always {
-            cleanWs()
         }
     }
 }
