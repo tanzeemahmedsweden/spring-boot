@@ -15,5 +15,15 @@ pipeline {
             sh 'mvn -B test'
          }
       }
+      stage('Deploy') {
+         when {
+            expression {
+               currentBuild.result == null || currentBuild.result == 'SUCCESS'
+            }
+         }
+         steps {
+            echo 'deploying to prod ...'
+         }
+      }
    }
 }
