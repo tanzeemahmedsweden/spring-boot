@@ -1,29 +1,12 @@
-pipeline {
-   agent any
-   tools {
-      maven "3.6.3"
-      jdk "14"
-   }
-   stages {
-      stage('Build') {
-         steps {
-            sh 'mvn -B install'
-         }
+// Declarative //
+  pipeline {
+      agent any
+      parameters {
+          string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
       }
-      stage('Test') {
-         steps {
-            sh 'mvn -B test'
-         }
-      }
-      stage('Deploy') {
-         when {
-            expression {
-               currentBuild.result == null || currentBuild.result == 'SUCCESS'
-            }
-         }
-         steps {
-            echo 'deploying to prod ...'
-         }
-      }
-   }
-}
+stages {
+          stage('Example') {
+              steps {
+echo "${params.Greeting} World!" }
+} }
+  }
