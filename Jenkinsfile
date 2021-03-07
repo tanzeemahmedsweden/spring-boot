@@ -1,4 +1,7 @@
 pipeline {
+      environment {
+            PATH = "/usr/local/bin:$PATH"
+      }
       agent {
           docker {
             image 'maven:3.6.3-adoptopenjdk-14'
